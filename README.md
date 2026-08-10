@@ -58,12 +58,65 @@ The analysis was used to identify sales trends, vehicle performance, revenue pat
 
 ## Power BI Dashboard
 
+An interactive Power BI dashboard was created to visualize:
+- Total Sales
+- Total Revenue
+- Average Sales
+- Vehicle Model Performance
+- Regional Sales
+- Fuel-Type Distribution
+- Sales Trends
+- Year-over-Year Performance
+- Key Business KPIs
 
+**Disclaimer:** The dashboard is an independently developed visualization based on the source dataset. It is not an official Tata Motors dashboard or representation of Tata Motors' internal reporting.
 
 ## Key KPIs
-## Key Insights
-## Technologies Used
-## Project Workflow
-## Dataset Attribution
-## Dataset Disclaimer
 
+## Key Insights
+
+The project identifies patterns such as:
+- High-performing and low-performing vehicle models
+- Regional differences in sales
+- Changes in sales over time
+- Revenue trends
+- Differences between vehicle categories and fuel types
+- Potential areas for further business analysis
+
+Disclaimer: These insights are derived from the available dataset and are intended for demonstration and learning purposes. They should not be treated as official Tata Motors business conclusions.
+
+## Technologies Used
+
+- SQL Server
+- Power BI
+- Microsoft Excel
+- GitHub
+
+## Project Workflow
+
+  Kaggle Dataset
+        ↓
+  Data Extraction
+        ↓
+  Data Cleaning & Validation
+        ↓
+  ETL using SQL Server
+        ↓
+  SQL Analysis
+        ↓
+  Power BI Data Modeling
+        ↓
+  Dashboard Development
+        ↓
+  Business Insight
+
+## Dataset Attribution
+## Overall Disclaimer
+
+1. This repository is an independent educational and portfolio project created to demonstrate skills in SQL, ETL, data analysis,
+    and Power BI.
+2. The project is not affiliated with, sponsored by, authorized by, or endorsed by Tata Motors Limited.
+3. Tata Motors and related trademarks, names, and intellectual property belong to their respective owners.
+4. The dataset was obtained from Kaggle and remains subject to its original license and terms. No ownership of third-party data or
+    intellectual property is claimed through this repository.
+   
