@@ -24,6 +24,9 @@ The dataset used in this project was obtained from Kaggle and is used for educat
 The dataset is subject to the original license and terms specified by the dataset creator on Kaggle.
 https://www.kaggle.com/datasets/numenvikrant/tata-motors-sales-analysis-2021-2022?utm_source=chatgpt.com
 
+**Data preparation:**
+The original Kaggle dataset was divided into two logical datasets, vehicle_info and sales_details, to separate vehicle attributes from sales - related information. These datasets were then loaded into SQl Server for data cleaning, transformation, exploration, and  sales analysis.
+
 **Dataset Disclaimer:** The dataset used in this project was obtained from Kaggle and is used for educational and portfolio purposes. The dataset remains subject to the original license and terms specified by its creator on Kaggle. This project is an independent data analytics project and is not affiliated with, sponsored by, or endorsed by Tata motors.
 
 ## ETL/Data Cleaning
@@ -97,11 +100,11 @@ Disclaimer: These insights are derived from the available dataset and are intend
 
   Kaggle Dataset
         ↓
-  Data Extraction
+  Data Splitting
         ↓
-  Data Cleaning & Validation
+  SQl Tables
         ↓
-  ETL using SQL Server
+   Data Cleaning & Validation
         ↓
   SQL Analysis
         ↓
@@ -111,7 +114,6 @@ Disclaimer: These insights are derived from the available dataset and are intend
         ↓
   Business Insight
 
-## Dataset Attribution
 ## Overall Disclaimer
 
 1. This repository is an independent educational and portfolio project created to demonstrate skills in SQL, ETL, data analysis,
