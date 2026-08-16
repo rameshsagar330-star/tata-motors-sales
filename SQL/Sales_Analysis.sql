@@ -112,14 +112,26 @@ Sales Analysis Performed
   ORDER BY total_units DESC;
 
 --11. Mileage vs Sales 
-  SELECT v.mileage_kmpl,
-  	SUM(s.sale_units) AS total_units
-  FROM sales_details s
-  JOIN vehicle_info v
-    ON s.vin = v.vin
-  WHERE v.mileage_kmpl IS NOT NULL
-  GROUP BY v.mileage_kmpl
-  ORDER BY v.mileage_kmpl DESC;
+  --11. Mileage vs Sales 
+WITH cte_group AS(
+	SELECT 
+		s.sale_id,
+		s.sale_units,
+		CASE WHEN v.mileage_kmpl <= 15.0 THEN '15 below'
+			 WHEN v.mileage_kmpl <= 20.0 THEN '15 to 20 kmpl'
+			 WHEN v.mileage_kmpl <= 25.0 THEN '20 to 25 kmpl'
+			 ELSE '25 above'
+		END AS mileage_group
+	FROM sales_details s
+	JOIN vehicle_info v
+	ON s.vin = v.vin
+)
+SELECT 
+	mileage_group,
+	SUM(sale_units) AS total_sales
+FROM cte_group
+GROUP BY mileage_group
+ORDER BY mileage_group DESC;
 
 --12. Variant Performance
   SELECT v.variant,
