@@ -61,7 +61,7 @@ These checks helped ensure data consistency and reliability before proceeding wi
     -- For vehicle_info table
       SELECT * FROM vehicle_info
       WHERE vehicle_model != TRIM(vehicle_model)
-        OR veriant != TRIM(variant)
+        OR variant != TRIM(variant)
         OR body_type != TRIM(body_type)
         OR vehicle_color != TRIM(vehicle_color)
         OR fuel_type != TRIM(fuel_type);
@@ -107,7 +107,7 @@ These checks helped ensure data consistency and reliability before proceeding wi
     WHERE mileage_kmpl <= 0
        OR horse_power <= 0
        OR CO2_gperkms < 0
-       OR safty_rating < 0
+       OR safety_rating < 0
        OR seats < 0;
 
 -- 8. Check for invalid dates
@@ -117,7 +117,7 @@ These checks helped ensure data consistency and reliability before proceeding wi
     	OR manufacture_year >= GETDATE();
   -- For vehicle_info table
     SELECT * FROM vehicle_info
-    WHERE launch_date >= GETDATE();
+    WHERE launch_date >= YEAR(GETDATE());
 
 -- 9. Varify data types sp_help sales
   sp_help sales_details;
