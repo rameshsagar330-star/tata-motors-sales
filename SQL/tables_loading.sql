@@ -23,10 +23,22 @@ for better data organization and analysis:
 The two datasets are connected using the appropriate
 common identifier.
 */
+
+					--===============--
+					-- TABLE LOADING --
+					--===============--
+USE MASTER;
+GO
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'tata_motors')
+	BEGIN
+		ALTER DATABASE tata_motors SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+		DROP DATABASE tata_motors;
+	END
 	--===================--
 	-- Vehicle_Info table --
 	--===================--
 -- Create Vehicle_Info table:
+GO
 	IF OBJECT_ID ('sales_details', 'U') IS NOT NULL
 		DROP TABLE sales_details;
 	CREATE TABLE sales_details (
@@ -52,7 +64,6 @@ common identifier.
 		FIELDTERMINATOR = ',',
 		TABLOCK
 		);
-
 	--=====================--
 	-- sales_details table --
 	--=====================--
