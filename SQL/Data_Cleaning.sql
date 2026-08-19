@@ -2,19 +2,7 @@
 		--=================--
 		--  Data Cleaning  --
 		--=================--
-INSERT INTO sales_details (
-	sale_id,
-	vin,
-	vehicle_model,
-	vehicle_color,
-	manufacture_year,
-	sale_date,
-	dealer_id,
-	dealer_city,
-	reg_state,
-	sale_units,
-	sale_price
-)
+
 -- Data cleaning process
 -- Data cleaning for sales_details table
 SELECT 
@@ -47,25 +35,8 @@ SELECT
 	END AS sale_price	-- NULL price is replaced with minimum value as 1,50,000/-
 FROM sales_details
 WHERE sale_id IS NOT NULL;
---================================
---================================
-INSERT INTO vehicle_info (
-	record_id,
-	vin,
-	vehicle_model,
-	variant,
-	body_type,
-	vehicle_color,
-	color_code,
-	launch_date,
-	fuel_type,
-	mileage_kmpl,
-	horse_power,
-	safety_rating,
-	seats,
-	air_bags,
-	num_doors
-)
+
+			-- ******* -
 -- data cleaning for the vehicle_info table
 SELECT 
 	record_id,
