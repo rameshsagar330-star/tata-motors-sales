@@ -9,17 +9,18 @@ The project follows a structured workflow starting from raw data acquisition and
 
 ## Project Workflow
 
-  Kaggle Dataset
-        ↓
-  Data preparation
-        ↓
-  SQl Database
-        ↓
-   Data Cleaning
-        ↓
-  Sales Analysis
-        ↓
-  Power BI Dashboard
+    Kaggle Dataset 
+    (csv files)
+          ↓
+    Data preparation
+          ↓
+    SQl Database
+          ↓
+     Data Cleaning
+          ↓
+    Sales Analysis
+          ↓
+    Power BI Dashboard
 
 ## Data Source
 
@@ -27,14 +28,14 @@ The dataset used in this project was obtained from Kaggle and is used for educat
 The dataset is subject to the original license and terms specified by the dataset creator on Kaggle.
 https://www.kaggle.com/datasets/numenvikrant/tata-motors-sales-analysis-2021-2022?utm_source=chatgpt.com
 
-The Original dataset was divided into two logical datasets based on their business purpose:
+The Original dataset was divided into two logical datasets (csv files) based on their business purpose:
 1.**sales_details** - Contains Sales - related information such as sale id, vehicle model, color, manufacture year, sale date, dealer id, city, registered state, sale units and price.
 2.**vehicle_info** - Contains Vehicle - related information such as record id, vehicle model, color, variant, body type, launch date, fuel type, mileage, horse power, safety rating, and seats and etc.
 
 **Data preparation:**
-The original Kaggle dataset was divided into two logical datasets, vehicle_info and sales_details, to separate vehicle attributes from sales - related information. These datasets were then loaded into SQl Server for data cleaning, transformation, exploration, and  sales analysis.
+The original Kaggle dataset was divided into two logical datasets (csv files), vehicle_info and sales_details, to separate vehicle attributes from sales - related information. These datasets (csv files) were then loaded into SQl Server for data cleaning, transformation, exploration, and  sales analysis.
 
-**Dataset Disclaimer:** The dataset used in this project was obtained from Kaggle and is used for educational and portfolio purposes. The dataset remains subject to the original license and terms specified by its creator on Kaggle. This project is an independent data analytics project and is not affiliated with, sponsored by, or endorsed by Tata motors.
+**Dataset Disclaimer:** The dataset (csv files) used in this project was obtained from Kaggle and is used for educational and portfolio purposes. The dataset remains subject to the original license and terms specified by its creator on Kaggle. This project is an independent data analytics project and is not affiliated with, sponsored by, or endorsed by Tata motors.
 
 ## ETL/Data Cleaning
 
@@ -84,7 +85,24 @@ An interactive Power BI dashboard was created to visualize:
 
 ## Key KPIs
 
+### Sales Performance
+- **Total Revenue:** ₹301.04 Billion
+- **Total Units Sold:** 199K
+- **Average Selling Price:** ₹1.51 Million
+- **Total Vehicle Models:** 18
 
+### Vehicle Performance
+- **Average Mileage:** 16.07 KM/L
+- **Average Horsepower:** 96.49 HP
+- **Average Safety Rating:** 3.93 / 5
+
+### Dealer & Geographic Performance
+- **Total Dealers:** 1K
+- **Average Dealer Revenue:** ₹301.04 Million
+- **Top-Selling Vehicle Model:** Tiger
+- **Top-Performing Fuel Type:** Petrol
+- **Top-Performing Body Type:** Hatchback
+- **Top-Performing City:** Jaipur
 ## Key Insights
 
 The project identifies patterns such as:
