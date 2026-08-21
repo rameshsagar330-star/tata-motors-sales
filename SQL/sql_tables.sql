@@ -9,16 +9,17 @@ The original dataset was obtained from Kaggle.
 Data Preparation:
 The original source dataset was divided into two separate files
 for better data organization and analysis:
+1. Sales_Details
+   - Contains sales-related information such as:
+     VIN, dealer information, sales date,
+     sales units, sale price, registration state, etc.
 
-1. Vehicle_Info
+2. Vehicle_Info
    - Contains vehicle-related information such as:
      model, variant, fuel type, body type, seats,
      color, horsepower, safety rating, etc.
 
-2. Sales_Details
-   - Contains sales-related information such as:
-     VIN, dealer information, sales date,
-     sales units, sale price, registration state, etc.
+
 
 The two datasets are connected using the appropriate
 common identifier.
@@ -39,9 +40,9 @@ IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'tata_motors')
 	--===================--
 -- Create Vehicle_Info table:
 GO
-	IF OBJECT_ID ('sales_details', 'U') IS NOT NULL
-		DROP TABLE sales_details;
-	CREATE TABLE sales_details (
+	IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
+		DROP TABLE raw_sales_details;
+	CREATE TABLE raw_sales_details (
 			sale_id			INT,
 			vin				NVARCHAR(50),
 			vehicle_model	NVARCHAR(50),
@@ -56,8 +57,8 @@ GO
 			);
 
 -- sales_details Tables Loading:
-	TRUNCATE TABLE sales_details;
-	BULK INSERT sales_details
+	TRUNCATE TABLE raw_sales_details;
+	BULK INSERT raw_sales_details
 	FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
 	WITH (
 		FIRSTROW = 2,
@@ -68,9 +69,9 @@ GO
 	-- sales_details table --
 	--=====================--
 --Creating Vehicle_Info table:
-	IF OBJECT_ID ('vehicle_info', 'U') IS NOT NULL
-		DROP TABLE vehicle_info;
-	CREATE TABLE vehicle_info (
+	IF OBJECT_ID ('raw_vehicle_info', 'U') IS NOT NULL
+		DROP TABLE raw_vehicle_info;
+	CREATE TABLE raw_vehicle_info (
 		record_id		INT,
 		vin				NVARCHAR(50),
 		vehicle_model	NVARCHAR(50),
@@ -90,8 +91,8 @@ GO
 		);
 
 -- vehicle_info table loading:
-	TRUNCATE TABLE vehicle_info;
-	BULK INSERT vehicle_info
+	TRUNCATE TABLE raw_vehicle_info;
+	BULK INSERT raw_vehicle_info
 	FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
 	WITH (
 		FIRSTROW = 2,
