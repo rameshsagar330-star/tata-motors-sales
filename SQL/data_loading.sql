@@ -48,8 +48,9 @@ GO
 			--------------------------------
 			-- Creating Tables for Raw Data
 			--------------------------------
--- Creating sales_details Table:
---------------------------------
+	
+-- Creating raw_sales_details Table:
+------------------------------------
 IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 	DROP TABLE raw_sales_details;
  CREATE TABLE raw_sales_details (
@@ -66,8 +67,8 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 		sale_price			FLOAT
 	);
 
---Creating Vehicle_Info table:
-------------------------------
+--Creating raw_vehicle_Info table:
+----------------------------------
 	IF OBJECT_ID ('raw_vehicle_info', 'U') IS NOT NULL
 		DROP TABLE raw_vehicle_info;
 	CREATE TABLE raw_vehicle_info (
@@ -87,15 +88,14 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 		seats				INT,
 		air_bags			INT,
 		num_doors			INT
-		);
-
+	);
 
 			-------------------------------------
 			--Loading the data inside Raw tables
 			-------------------------------------
--- Loading sales_details table:
--------------------------------
 
+-- Loading raw_sales_details table:
+-----------------------------------
 	TRUNCATE TABLE raw_sales_details;
 	BULK INSERT raw_sales_details
 	FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
@@ -105,7 +105,8 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 		TABLOCK
 		);
 
--- vehicle_info table loading:
+-- Loading raw_vehicle_info table:
+----------------------------------
 	TRUNCATE TABLE raw_vehicle_info;
 	BULK INSERT raw_vehicle_info
 	FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
@@ -121,7 +122,6 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 
 -- Data cleaning process
 -- Data cleaning for sales_details table
-
 
 IF OBJECT_ID ('sales_details', 'U') IS NOT NULL
 	DROP TABLE sales_details;
@@ -174,7 +174,7 @@ INSERT INTO sales_details (
 	reg_state,
 	sale_units,
 	sale_price
-)
+);
 -- Data cleaning process
 -- Data cleaning for sales_details table
 SELECT 
