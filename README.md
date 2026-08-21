@@ -1,28 +1,35 @@
 # tata-motors-sales-Analytics
 ## Project Overview
 
-This project focuses on analyzing Tata Motors sales data to identify sales trends, vehicle performance, regional sales behavior, and key business insights using SQL Server and Power BI.
+**Tata Motors Sales Trend** Analysis is an end-to-end data analytics project focused on analyzing vehicle sales performance and identifying key sales trend using **SQL Server and PowerBI**.
+
+The project follows a structured workflow starting from raw data acquisition and preparation through data cleaning, transformation, SQl analysis, and interactive dashboard development.
 
 **Disclaimer:** This is an independent educational and portfolio project. It is not affiliated with, sponsored by, or endorsed by Tata Motors
 
-## Business Problem
+## Project Workflow
 
-The objective of this project is to analyze sales data and identify:
-- Overall sales trends and performance
-- Top-performing vehicle models
-- Sales performance across different regions/cities
-- Revenue and sales-unit trends
-- Fuel-type and vehicle-category performance
-- Yearly and monthly sales patterns
-- Key business KPIs and actionable insights
+  Kaggle Dataset
+        ↓
+  Data preparation
+        ↓
+  SQl Database
+        ↓
+   Data Cleaning
+        ↓
+  Sales Analysis
+        ↓
+  Power BI Dashboard
 
-**Disclaimer:** The business objectives and analysis presented in this repository are created for learning and portfolio purposes and should not be considered official Tata Motors business analysis.
-
-## Dataset
+## Data Source
 
 The dataset used in this project was obtained from Kaggle and is used for educational and portfolio purposes.
 The dataset is subject to the original license and terms specified by the dataset creator on Kaggle.
 https://www.kaggle.com/datasets/numenvikrant/tata-motors-sales-analysis-2021-2022?utm_source=chatgpt.com
+
+The Original dataset was divided into two logical datasets based on their business purpose:
+1.**sales_details** - Contains Sales - related information such as sale id, vehicle model, color, manufacture year, sale date, dealer id, city, registered state, sale units and price.
+2.**vehicle_info** - Contains Vehicle - related information such as record id, vehicle model, color, variant, body type, launch date, fuel type, mileage, horse power, safety rating, and seats and etc.
 
 **Data preparation:**
 The original Kaggle dataset was divided into two logical datasets, vehicle_info and sales_details, to separate vehicle attributes from sales - related information. These datasets were then loaded into SQl Server for data cleaning, transformation, exploration, and  sales analysis.
@@ -39,7 +46,7 @@ The data was prepared using SQL Server through an ETL process involving:
 - Duplicate identification and removal
 - Data validation
 - Data transformation
-- Loading the cleaned data into SQL Server tables
+- Loading the cleaned data into SQL Server tables named as sales_details and vehicle_info tables
 
 **Disclaimer:** The ETL processes and transformations in this repository were independently created for analytical and educational purposes. They do not represent Tata Motors' actual internal data-processing or ETL systems.
 
@@ -77,6 +84,7 @@ An interactive Power BI dashboard was created to visualize:
 
 ## Key KPIs
 
+
 ## Key Insights
 
 The project identifies patterns such as:
@@ -95,24 +103,6 @@ Disclaimer: These insights are derived from the available dataset and are intend
 - Power BI
 - Microsoft Excel
 - GitHub
-
-## Project Workflow
-
-  Kaggle Dataset
-        ↓
-  Data Splitting
-        ↓
-  SQl Tables
-        ↓
-   Data Cleaning & Validation
-        ↓
-  SQL Analysis
-        ↓
-  Power BI Data Modeling
-        ↓
-  Dashboard Development
-        ↓
-  Business Insight
 
 ## Overall Disclaimer
 
