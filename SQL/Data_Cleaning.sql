@@ -5,6 +5,62 @@
 
 -- Data cleaning process
 -- Data cleaning for sales_details table
+
+
+IF OBJECT_ID ('sales_details', 'U') IS NOT NULL
+	DROP TABLE sales_details;
+ CREATE TABLE sales_details (
+		sale_id			INT,
+		vin				NVARCHAR(50),
+		vehicle_model	NVARCHAR(50),
+		vehicle_color	NVARCHAR(50),
+		manufacture_year DATE,
+		sale_date		DATE,
+		dealer_id		INT,
+		dealer_city		NVARCHAR(50),
+		reg_state		NVARCHAR(50),
+		sale_units		INT,
+		sale_price		FLOAT
+	);
+
+	--Creating Vehicle_Info table:
+	IF OBJECT_ID ('vehicle_info', 'U') IS NOT NULL
+		DROP TABLE vehicle_info;
+	CREATE TABLE vehicle_info (
+		record_id		INT,
+		vin				NVARCHAR(50),
+		vehicle_model	NVARCHAR(50),
+		variant			NVARCHAR(50),
+		body_type		NVARCHAR(50),
+		vehicle_color	NVARCHAR(50),
+		color_code		NVARCHAR(50),
+		launch_date		DATE,
+		fuel_type		NVARCHAR(50),
+		mileage_kmpl	FLOAT,
+		horse_power		FLOAT,
+		CO2_gperkms		FLOAT,
+		safety_rating	INT,
+		seats			INT,
+		air_bags		INT,
+		num_doors		INT
+		);
+
+
+INSERT INTO sales_details (
+	sale_id,
+	vin,
+	vehicle_model,
+	vehicle_color,
+	manufacture_year,
+	sale_date,
+	dealer_id,
+	dealer_city,
+	reg_state,
+	sale_units,
+	sale_price
+)
+-- Data cleaning process
+-- Data cleaning for sales_details table
 SELECT 
 	sale_id,
 	vin,
@@ -14,10 +70,10 @@ SELECT
 	CASE WHEN NULLIF(TRIM(vehicle_color), '') IS NULL THEN 'Others'
  		 ELSE TRIM(vehicle_color)
 	END AS vehicle_color,
-	YEAR(manufacture_year) AS manufacture_year,
+	FORMAT(manufacture_year, 'yyyy') AS manufacture_year,
 	CASE WHEN sale_date IS NULL THEN '2026-08-01'
 			WHEN sale_date >= CAST(GETDATE() AS DATE) THEN '2026-08-01'
-			WHEN CAST(sale_date AS DATE) < CAST(manufacture_year AS DATE) THEN '2026-08-01'
+			WHEN sale_date > manufacture_year THEN '2026-08-01'
 			ELSE sale_date
 	END AS sale_date, -- replaced the NULLS with default date
 	dealer_id,
@@ -33,10 +89,28 @@ SELECT
 	CASE WHEN sale_price IS NULL OR sale_price <= 0 THEN 150000
 		 ELSE sale_price
 	END AS sale_price	-- NULL price is replaced with minimum value as 1,50,000/-
-FROM sales_details
+FROM raw_sales_details
 WHERE sale_id IS NOT NULL;
+--================================
+--================================
 
-			-- ******* -
+INSERT INTO vehicle_info (
+	record_id,
+	vin,
+	vehicle_model,
+	variant,
+	body_type,
+	vehicle_color,
+	color_code,
+	launch_date,
+	fuel_type,
+	mileage_kmpl,
+	horse_power,
+	safety_rating,
+	seats,
+	air_bags,
+	num_doors
+)
 -- data cleaning for the vehicle_info table
 SELECT 
 	record_id,
@@ -71,8 +145,5 @@ SELECT
 	END AS seats,	-- replace nulls and 0 with 5 seats 
 	ISNULL(air_bags, 0) AS air_bags, -- replaced nulls with 0 air bags
 	num_doors
-FROM vehicle_info
+FROM raw_vehicle_info
 WHERE record_id IS NOT NULL;
-
-
-
