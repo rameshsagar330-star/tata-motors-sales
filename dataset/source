@@ -1,17 +1,13 @@
-## 📂 Dataset Source
+📂 Dataset Source
 
 The dataset used in this project was downloaded from the following Kaggle dataset:
 
-**Kaggle Dataset:**
+Kaggle Dataset:
 Tata Motors Sales Analysis
 (https://www.kaggle.com/datasets/numenvikrant/tata-motors-sales-analysis-2021-2022?utm_source=chatgpt.com)
-
 The downloaded dataset was used as the **source data** for this project. It was loaded into SQL Server, cleaned, standardized, validated, and transformed into analysis-ready tables (`sales_details` and `vehicle_info`) for sales analysis and Power BI dashboard development.
 
-### ⚠️ License & Disclaimer
-
+⚠️ License & Disclaimer:
 This dataset was downloaded from Kaggle and is **owned by its original creator/contributor**. I do not claim ownership of the original dataset.
-
 The dataset is used in this repository for **educational and portfolio purposes**. Please refer to the original Kaggle dataset page for the applicable license and usage terms.
-
 This project is an **independent data analysis project** and is not affiliated with, sponsored by, or endorsed by Tata Motors. Tata Motors, its trademarks, vehicle names, and related intellectual property belong to their respective owners.
