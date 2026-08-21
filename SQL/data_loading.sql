@@ -95,25 +95,25 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 			-------------------------------------
 -- Loading sales_details table:
 -------------------------------
-TRUNCATE TABLE raw_sales_details;
-BULK INSERT raw_sales_details
-FROM 'D:\ramesh\Info\python\analysis\sale_details.csv'
-WITH (
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	TABLOCK
-	);
 
--- Loading vehicle_info table:
-------------------------------
-TRUNCATE TABLE raw_vehicle_info;
-BULK INSERT raw_vehicle_info
-FROM 'D:\ramesh\Info\python\analysis\vehicle_info.csv'
-WITH (
-	FIRSTROW = 2,
-	FIELDTERMINATOR = ',',
-	TABLOCK
-	);
+	TRUNCATE TABLE raw_sales_details;
+	BULK INSERT raw_sales_details
+	FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
+	WITH (
+		FIRSTROW = 2,
+		FIELDTERMINATOR = ',',
+		TABLOCK
+		);
+
+-- vehicle_info table loading:
+	TRUNCATE TABLE raw_vehicle_info;
+	BULK INSERT raw_vehicle_info
+	FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
+	WITH (
+		FIRSTROW = 2,
+		FIELDTERMINATOR = ',',
+		TABLOCK
+		);
 
 		--=================--
 		--  Data Cleaning  --
