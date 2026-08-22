@@ -34,15 +34,15 @@ WARNING:
 
 USE MASTER;
 GO
-IF DB_ID ('tata_motors') IS NOT NULL
-BEGIN
-ALTER DATABASE tata_motors SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-DROP DATABASE tata_motors;
-END
+	IF DB_ID ('tata_motors') IS NOT NULL
+	BEGIN
+		ALTER DATABASE tata_motors SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+		DROP DATABASE tata_motors;
+	END
 GO
-CREATE DATABASE tata_motors
+	CREATE DATABASE tata_motors
 GO 
-USE tata_motors
+	USE tata_motors
 GO
 	
 			--------------------------------
@@ -51,9 +51,9 @@ GO
 	
 -- Creating raw_sales_details Table:
 ------------------------------------
-IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
-	DROP TABLE raw_sales_details;
- CREATE TABLE raw_sales_details (
+	IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
+		DROP TABLE raw_sales_details;
+	 CREATE TABLE raw_sales_details (
 		sale_id				INT,
 		vin					NVARCHAR(50),
 		vehicle_model		NVARCHAR(50),
@@ -65,7 +65,7 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 		reg_state			NVARCHAR(50),
 		sale_units			INT,
 		sale_price			FLOAT
-	);
+		);
 
 --Creating raw_vehicle_Info table:
 ----------------------------------
@@ -99,21 +99,21 @@ IF OBJECT_ID ('raw_sales_details', 'U') IS NOT NULL
 	TRUNCATE TABLE raw_sales_details;
 	BULK INSERT raw_sales_details
 	FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
-	WITH (
-		FIRSTROW = 2,
-		FIELDTERMINATOR = ',',
-		TABLOCK
-		);
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+			);
 
 -- Loading raw_vehicle_info table:
 ----------------------------------
 	TRUNCATE TABLE raw_vehicle_info;
 	BULK INSERT raw_vehicle_info
 	FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
-	WITH (
-		FIRSTROW = 2,
-		FIELDTERMINATOR = ',',
-		TABLOCK
-		);
+		WITH (
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+			);
 
 
