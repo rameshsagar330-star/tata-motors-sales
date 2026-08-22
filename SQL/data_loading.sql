@@ -133,9 +133,9 @@ BEGIN
 	BEGIN CATCH
 		PRINT 'Tables Loading failed'
 		PRINT 'Error Message: ' + ERROR_MESSAGE();
+		PRINT 'Eoor Number: ' + ERROR_NUMBER();
 		PRINT 'Error state: ' + ERROR_STATE();
 		PRINT 'Error line: ' + ERROR_LINE();
-		PRINT 'Eoor Number: ' + ERROR_NUMBER();
 	END CATCH
 END;
 
