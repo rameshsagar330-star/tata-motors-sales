@@ -28,9 +28,9 @@ WARNING:
     and ensure you have proper backups before running this script.
 							*****
 */
-				
+			--------------------	
 			--  Create Database:
-			---------------------
+			--------------------
 
 USE MASTER;
 GO
