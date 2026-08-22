@@ -96,24 +96,46 @@ GO
 
 -- Loading raw_sales_details table:
 -----------------------------------
-	TRUNCATE TABLE raw_sales_details;
-	BULK INSERT raw_sales_details
-	FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
-		WITH (
-			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
-			TABLOCK
-			);
-
+BEGIN
+	DECLARE @batch_start_time DATETIME, @batch_end_time DATETIME, @start_time DATETIME, @end_time DATETIME;
+	BEGIN TRY
+		SET @batch_start_time = GETDATE();
+			SET @start_time = GETDATE();
+				TRUNCATE TABLE raw_sales_details;
+				BULK INSERT raw_sales_details
+				FROM '<filepath>/sale_details.csv' -- specify file path in <filepath>/file_name.csv 
+					WITH (
+						FIRSTROW = 2,
+						FIELDTERMINATOR = ',',
+						TABLOCK
+						);
+			SET @end_time = GETDATE();
+			PRINT 'raw_sales_details table loading Successfull'
+			PRINT 'raw_sales_details table loading Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + 'seconds'
 -- Loading raw_vehicle_info table:
 ----------------------------------
-	TRUNCATE TABLE raw_vehicle_info;
-	BULK INSERT raw_vehicle_info
-	FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
-		WITH (
-			FIRSTROW = 2,
-			FIELDTERMINATOR = ',',
-			TABLOCK
-			);
-
+			SET @start_time = GETDATE();
+				TRUNCATE TABLE raw_vehicle_info;
+				BULK INSERT raw_vehicle_info
+				FROM '<filepath>\vehicle_info.csv' -- specify file path in <filepath>/file_name.csv
+					WITH (
+						FIRSTROW = 2,
+						FIELDTERMINATOR = ',',
+						TABLOCK
+						);
+			SET @end_time = GETDATE();
+			PRINT 'raw_vehicle_info table loading successfull';
+			PRINT 'raw_vehicle_info table loading Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + 'seconds' 
+		SET @batch_end_time = GETDATE();
+		PRINT 'Table loading successfull'
+		PRINT 'Tables Loading Duration: ' + CAST(DATEDIFF(SECOND, @batch_start_time, @batch_end_time) AS NVARCHAR) + 'seconds'
+	END TRY
+	BEGIN CATCH
+		PRINT 'Tables Loading failed'
+		PRINT 'Error Message: ' + ERROR_MESSAGE();
+		PRINT 'Error state: ' + ERROR_STATE();
+		PRINT 'Error line: ' + ERROR_LINE();
+		PRINT 'Eoor Number: ' + ERROR_NUMBER();
+	END CATCH
+END;
 
