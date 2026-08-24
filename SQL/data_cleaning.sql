@@ -106,9 +106,8 @@ the assumptions applied to handle missing, invalid, or inconsistent source data.
 			END AS vehicle_color,
 			FORMAT(manufacture_year, 'yyyy') AS manufacture_year,
 			CASE WHEN sale_date IS NULL THEN '2026-08-01'
-					WHEN sale_date >= CAST(GETDATE() AS DATE) THEN '2026-08-01'
-					WHEN sale_date > manufacture_year THEN '2026-08-01'
-					ELSE sale_date
+				 WHEN sale_date >= CAST(GETDATE() AS DATE) OR sale_date < manufacture_year THEN '2026-08-01'
+				 ELSE sale_date
 			END AS sale_date, -- replaced the NULLS with default date
 			dealer_id,
 			CASE WHEN NULLIF(TRIM(dealer_city), '') IS NULL THEN 'Others'
