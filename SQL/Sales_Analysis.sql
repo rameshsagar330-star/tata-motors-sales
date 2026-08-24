@@ -71,22 +71,23 @@ the foundation for the Power BI dashboard and visualization.
 -- 5. Monthly sales and trend
 -----------------------------
 	-- Monthly sale Trends
-		SELECT 
-			YEAR(sale_date) AS sale_year,
-			MONTH(sale_date) AS sale_month,
+		SELECT
+			DATEPART(YEAR, sale_date) AS sale_year,
+			DATEPART(MONTH, sale_date) AS sale_month,
 			SUM(sale_units * sale_price) AS yearly_revenue
 		FROM sales_details
-		GROUP BY YEAR(sale_date),
-				MONTH(sale_date)
-		ORDER BY YEAR(sale_date),
-				MONTH(sale_date);
+		GROUP BY DATEPART(YEAR, sale_date),
+				 DATEPART(MONTH, sale_date)
+		ORDER BY DATEPART(YEAR, sale_date) DESC,
+				 DATEPART(MONTH, sale_date) DESC;
 	-- yearly sale trend
-	  	SELECT 
-			YEAR(sale_date) AS sale_year,
-	  		SUM(sale_units * sale_price) AS total_revenue
-	  	FROM sales_details 
-	  	GROUP BY YEAR(sale_date)
-	  	ORDER BY sale_year DESC;
+		SELECT 
+			DATEPART(YEAR, sale_date) AS sale_year,
+			SUM(sale_units) AS total_units,
+			SUM(sale_units * sale_price) AS total_revenue
+		FROM sales_details 
+		GROUP BY YEAR(sale_date)
+		ORDER BY total_revenue DESC;
 
 -- 6. Dealer performance
 ------------------------
