@@ -105,8 +105,8 @@ the assumptions applied to handle missing, invalid, or inconsistent source data.
 		 		 ELSE TRIM(vehicle_color)
 			END AS vehicle_color,
 			FORMAT(manufacture_year, 'yyyy') AS manufacture_year,
-			CASE WHEN sale_date IS NULL THEN '2026-08-01'
-				 WHEN sale_date >= CAST(GETDATE() AS DATE) OR sale_date < manufacture_year THEN '2026-08-01'
+			CASE WHEN sale_date IS NULL THEN '2026-01-01'
+				 WHEN sale_date >= CAST(GETDATE() AS DATE) OR sale_date < manufacture_year THEN '2026-01-01'
 				 ELSE sale_date
 			END AS sale_date, -- replaced the NULLS with default date
 			dealer_id,
